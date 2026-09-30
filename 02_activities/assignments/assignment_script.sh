@@ -32,10 +32,10 @@ unzip -q rawdata.zip
 # 1. Create a directory named data
 mkdir data
 ls
--ld data 
+ls -ld data
 
 # 2. Move the ./rawdata directory to ./data/raw (eg. move it into ./data and rename it to raw)
-> mv ./rawdata ./data/raw && find ./data -maxdepth 2 -type f -print | sort | head -10 && printf 'Files moved: ' && find ./data/raw -type f | wc -l
+mv ./rawdata ./data/raw && find ./data -maxdepth 2 -type f -print | sort | head -10 && printf 'Files moved: ' && find ./data/raw -type f | wc -l
 
 # 3. List the contents of the ./data/raw directory
 ls ./data/raw
@@ -56,7 +56,9 @@ cp ./data/raw/*event*.log ./data/processed/event_logs/
 find ./data/raw ./data/processed/user_logs -type f -name '*ipaddr*' -delete
 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
-find ./data/processed -mindepth 2 -type f -print | sort
+find ./data/processed -mindepth 2 -type f -print | sort > ./data/inventory.txt
+
+printf 'Inventory entries: ' && wc -l < ./data/inventory.txt && printf 'Processed files: ' && find ./data/processed -mindepth 2 -type f | wc -l && diff -u <(find ./data/processed -mindepth 2 -type f -print | sort) ./data/inventory.txt
 
 ###########################################
 
