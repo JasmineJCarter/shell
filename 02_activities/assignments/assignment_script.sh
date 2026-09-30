@@ -31,7 +31,7 @@ unzip -q rawdata.zip
 
 # 1. Create a directory named data
 mkdir data
-ls
+
 ls -ld data
 
 # 2. Move the ./rawdata directory to ./data/raw (eg. move it into ./data and rename it to raw)
