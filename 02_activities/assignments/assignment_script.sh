@@ -31,7 +31,6 @@ unzip -q rawdata.zip
 
 # 1. Create a directory named data
 mkdir data
-
 ls -ld data
 
 # 2. Move the ./rawdata directory to ./data/raw (eg. move it into ./data and rename it to raw)
@@ -49,7 +48,6 @@ find ./data/raw -maxdepth 1 -type f -name '*server*.log' -exec cp {} ./data/proc
 
 # 6. Repeat the above step for user logs and event logs
 cp ./data/raw/*user*.log ./data/processed/user_logs/
-
 cp ./data/raw/*event*.log ./data/processed/event_logs/
 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
